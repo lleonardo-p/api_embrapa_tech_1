@@ -21,40 +21,45 @@ data_max = config['embrapa']['data_max']
 data_min = config['embrapa']['data_min']
 mode = ""
 
-crawler = EmbrapaCrawler(base_url, data_max, data_min)
+crawler = EmbrapaCrawler(base_url)
 
 print(f"[*] Production::::::")
 data_type = "production"
 query_opc = config['data_of_interest']['production']['opc']
 query_sub_opc =""
-#crawler.crawl(data_type , query_opc, query_sub_opc, "2022")
+result = crawler.crawl(data_type , query_opc, query_sub_opc, "2022")
+print(result[2])
 
 
 print(f"[*] Commercialization::::::")
 data_type = "commercialization"
 query_opc = config['data_of_interest']['commercialization']['opc']
 query_sub_opc =""
-#crawler.crawl(data_type , query_opc, query_sub_opc, "2022")
+result = crawler.crawl(data_type , query_opc, query_sub_opc, "2022")
+print(result[2])
 
 print(f"[*] Processing::::::")
 data_type = "processing"
 query_opc = config['data_of_interest']['processing']['opc']
 query_sub_opc = config['data_of_interest']['processing']['viniferas']
-crawler.crawl(data_type , query_opc, query_sub_opc, "2023")
+result = crawler.crawl(data_type , query_opc, query_sub_opc, "2023")
+print(result[2])
 
 
 print(f"[*] Importation::::::")
 data_type = "importation"
 query_opc = config['data_of_interest']['importation']['opc']
 query_sub_opc = config['data_of_interest']['importation']['vinho_mesa']
-crawler.crawl(data_type , query_opc, query_sub_opc, "2023")
+result = crawler.crawl(data_type , query_opc, query_sub_opc, "2023")
+print(result[2])
 
 
 print(f"[*] Exportation::::::")
 data_type = "exportation"
 query_opc = config['data_of_interest']['exportation']['opc']
 query_sub_opc = config['data_of_interest']['exportation']['vinho_mesa']
-crawler.crawl(data_type , query_opc, query_sub_opc, "2023")
+result = crawler.crawl(data_type , query_opc, query_sub_opc, "2023")
+print(result[2])
 
     
 
