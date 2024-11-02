@@ -18,7 +18,8 @@ class EmbrapaCrawler:
     def _get_value_by_key(self, dict_crawler ,search_key):
         sub_opc = dict_crawler["sub_options"]
         if len(sub_opc) > 0:
-            return sub_opc[search_key][1]
+            if search_key in sub_opc:
+                return sub_opc[search_key][1]
 
         return None  
 
@@ -27,7 +28,8 @@ class EmbrapaCrawler:
         route = data_map[self.route]
 
         if len(data_map["sub_options"]) > 0:
-            opc = data_map['sub_options'][self.query_opc][0]
+            if self.query_opc in data_map['sub_options']:
+                opc = data_map['sub_options'][self.query_opc][0]
         else:
             opc=""
         
