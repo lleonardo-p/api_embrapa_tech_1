@@ -5,30 +5,33 @@ embrapa:
 
 data_of_interest:
   production:
-    opc: "&opcao=opt_02"
+    opc: ["production", "&opcao=opt_02"]
 
   processing:
-    opc: "&opcao=opt_03"
-    viniferas: "&subopcao=subopt_01"
-    americana_hibri: "&subopcao=subopt_02"
-    uva_mesa: "&subopcao=subopt_03"
-    sem_class: "&subopcao=subopt_04"
+    opc: ["processing", "&opcao=opt_03"]
+    sub_options:
+      viniferas: ["&subopcao=subopt_01", "Viniferas"]
+      americana_hibri: ["&subopcao=subopt_02", "Americanas e híbridas"]
+      uva_mesa: ["&subopcao=subopt_03", "Uvas de mesa"]
+      sem_class: ["&subopcao=subopt_04", "Sem classificação"]
 
   commercialization:
-    opc: "&opcao=opt_04"
+    opc: ["commercialization", "&opcao=opt_04"]
 
   importation:
-    opc: "&opcao=opt_05"
-    vinho_mesa: "&subopcao=subopt_01"
-    espumante: "&subopcao=subopt_02"
-    uvas_frescas: "&subopcao=subopt_03"
-    uvas_passas: "&subopcao=subopt_04"
-    suco_uva: "&subopcao=subopt_05"
+    opc: ["importation", "&opcao=opt_05"]
+    sub_options:
+      vinho_mesa: ["&subopcao=subopt_01","Vinhos de mesa"]
+      espumante: ["&subopcao=subopt_02","Espumantes"]
+      uvas_frescas: ["&subopcao=subopt_03","Uvas frescas"]
+      uvas_passas: ["&subopcao=subopt_04","Uvas passas"]
+      suco_uva: ["&subopcao=subopt_05", "Suco de uva"]
 
   exportation:
-    opc: "&opcao=opt_06"
-    vinho_mesa: "&subopcao=subopt_01"
-    espumante: "&subopcao=subopt_02"
-    uvas_frescas: "&subopcao=subopt_03"
-    suco_uva: "&subopcao=subopt_04"
+    opc: ["exportation", "&opcao=opt_06"]
+    sub_options:
+      vinho_mesa: ["&subopcao=subopt_01", "Vinhos de mesa"]
+      espumante: ["&subopcao=subopt_02", "Espumantes"]
+      uvas_frescas: ["&subopcao=subopt_03", "Uvas frescas"]
+      suco_uva: ["&subopcao=subopt_04", "Suco de uva"]
 

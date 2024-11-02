@@ -3,42 +3,35 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 class EmbrapaCrawler:
-    def __init__(self, base_url, mode="inc"):
-        self.base_url = base_url
-        self.data_type = ""
+    def __init__(self, config=""):
+        self.base_url = config.base_url
+        self.route = ""
         self.query_opc = ""
-        self.query_sub_opc = ""
-        self.mode = mode
         self.select_date = ""
         self.data_list = []
-        self.processing = {
-            "viniferas": ("&subopcao=subopt_01", "Viniferas"),
-            "americana_hibri": ("&subopcao=subopt_02", "Americanas e híbridas"),
-            "uva_mesa": ("&subopcao=subopt_03", "Uvas de mesa"),
-            "sem_class": ("&subopcao=subopt_04", "Sem classificação")
-        }
-        self.importation = {
-            "vinho_mesa": ("&subopcao=subopt_01", "Vinhos de mesa"),
-            "espumante": ("&subopcao=subopt_02", "Espumantes"),
-            "uvas_frescas": ("&subopcao=subopt_03", "Uvas frescas"),
-            "uvas_passas": ("&subopcao=subopt_04", "Uvas passas"),
-            "suco_uva": ("&subopcao=subopt_05", "Suco de uva")
-        }
-        self.exportation = {
-            "vinho_mesa": ("&subopcao=subopt_01", "Vinhos de mesa"),
-            "espumante": ("&subopcao=subopt_02", "Espumantes"),
-            "uvas_frescas": ("&subopcao=subopt_03", "Uvas frescas"),
-            "suco_uva": ("&subopcao=subopt_04", "Suco de uva")
-        }
+        self.production = config.production
+        self.processing = config.processing
+        self.commercialization = config.commercialization
+        self.importation = config.importation
+        self.exportation = config.exportation
    
     def _get_value_by_key(self, dict_crawler ,search_key):
-        for _, (first, second) in dict_crawler.items():
-            if first == search_key:
-                return second
+        sub_opc = dict_crawler["sub_options"]
+        if len(sub_opc) > 0:
+            return sub_opc[search_key][1]
+
         return None  
 
     def make_url(self, year_of_interest=""):
-        url = f"{self.base_url}ano={year_of_interest}{self.query_opc}{self.query_sub_opc}"
+        data_map = getattr(self, self.route, {})
+        route = data_map[self.route]
+
+        if len(data_map["sub_options"]) > 0:
+            opc = data_map['sub_options'][self.query_opc][0]
+        else:
+            opc=""
+        
+        url = f"{self.base_url}ano={year_of_interest}{route}{opc}"
         print(f"[make_url] {url}")
         return url
 
@@ -105,22 +98,21 @@ class EmbrapaCrawler:
 
     def crawler_selection(self, soup, year):
         classification = None
-        if self.data_type in ["processing", "importation", "exportation"]:
-            data_map = getattr(self, self.data_type, {})
-            classification = self._get_value_by_key(data_map, self.query_sub_opc)
+        if self.route in ["processing", "importation", "exportation"]:
+            data_map = getattr(self, self.route, {})
+            classification = self._get_value_by_key(data_map, self.query_opc)
 
-        if self.data_type in ["production", "commercialization"]:
+        if self.route in ["production", "commercialization"]:
             self._production_and_commercialization(soup, year)
-        elif self.data_type == "processing":
+        elif self.route == "processing":
             self._processing(soup, classification, year)
-        elif self.data_type in ["importation", "exportation"]:
+        elif self.route in ["importation", "exportation"]:
             self._importation_or_exportation(soup, classification, year)
 
-    def crawl(self, data_type="", query_opc="", query_sub_opc="", select_date=""):
+    def crawl(self, route="", opc="", select_date=""):
         self.data_list = []
-        self.data_type = data_type
-        self.query_opc = query_opc
-        self.query_sub_opc = query_sub_opc
+        self.route = route
+        self.query_opc = opc
         url = self.make_url(select_date)
 
         try:
@@ -135,5 +127,4 @@ class EmbrapaCrawler:
         else:
             print(f"Crawling completed successfully for URL: {url}")
 
-        # Display gathered data
         return self.data_list 
