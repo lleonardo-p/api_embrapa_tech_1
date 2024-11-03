@@ -15,6 +15,21 @@ class EmbrapaCrawler:
         self.importation = config.importation
         self.exportation = config.exportation
    
+    
+    def validate_route(self):
+        data_map = getattr(self, self.route, {})
+
+        if not data_map:
+            return False
+
+        has_sub_options = data_map.get("sub_options")
+        if has_sub_options and self.query_opc not in has_sub_options:
+            return False
+
+        return True
+
+
+    
     def _get_value_by_key(self, dict_crawler ,search_key):
         sub_opc = dict_crawler["sub_options"]
         if len(sub_opc) > 0:
@@ -115,6 +130,9 @@ class EmbrapaCrawler:
         self.data_list = []
         self.route = route
         self.query_opc = opc
+        if not self.validate_route():
+            return "URL não é valida"
+
         url = self.make_url(select_date)
 
         try:
