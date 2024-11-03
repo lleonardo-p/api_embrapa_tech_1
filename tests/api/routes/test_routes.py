@@ -1,7 +1,7 @@
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from api.routes.routes import router
+from api_embrapa_tech_1.api.routes.routes import router
 
 
 app = FastAPI()

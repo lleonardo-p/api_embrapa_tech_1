@@ -1,7 +1,7 @@
 import pytest
 import yaml
 from unittest.mock import mock_open, patch
-from utils.conf import Conf
+from api_embrapa_tech_1.utils.conf import Conf
 
 @pytest.fixture
 def mock_config():

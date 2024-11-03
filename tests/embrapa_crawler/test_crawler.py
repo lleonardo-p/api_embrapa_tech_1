@@ -1,10 +1,9 @@
 # test_embrapa_crawler.py
 
 import pytest
-import requests_mock
 from bs4 import BeautifulSoup
 from datetime import datetime
-from embrapa_crawler.crawler import EmbrapaCrawler
+from api_embrapa_tech_1.embrapa_crawler.crawler import EmbrapaCrawler
 
 # A mock config object to provide configurations for the crawler
 class MockConfig:
