@@ -8,6 +8,7 @@ __pycache__/
 env/
 venv/
 ENV/
+dist/
 env.bak/
 venv.bak/
 build/
