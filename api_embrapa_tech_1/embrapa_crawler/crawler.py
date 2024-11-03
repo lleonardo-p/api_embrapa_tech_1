@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
 
 class EmbrapaCrawler:
     def __init__(self, config=""):
