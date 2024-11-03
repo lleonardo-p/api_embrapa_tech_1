@@ -1,4 +1,5 @@
 import yaml
+from pathlib import Path
 
 class Conf:
     def __init__(self, conf_path):
@@ -8,8 +9,14 @@ class Conf:
         self.importation = {}
         self.exportation = {}
         self.production = {}
-        self.config = self._load_config(conf_path)
+        
 
+        self.config_path = self._resolve_conf_path(conf_path)
+        self.config = self._load_config(self.config_path)
+
+    def _resolve_conf_path(self, conf_path):
+        dir_path = Path(__file__).resolve().parent
+        return dir_path.parent / conf_path  
 
     def _load_config(self, conf_path):
         with open(conf_path, 'r') as file:
@@ -23,12 +30,12 @@ class Conf:
 
         if "sub_options" in conf_dict:
             for opc in conf_dict["sub_options"]:
-                sub_options[opc] = (conf_dict["sub_options"][opc][0],conf_dict["sub_options"][opc][1])
+                sub_options[opc] = (conf_dict["sub_options"][opc][0], conf_dict["sub_options"][opc][1])
 
         return {
-                route: param,
-                "sub_options": sub_options
-              }
+            route: param,
+            "sub_options": sub_options
+        }
         
     def get_properties(self):
         self.base_url = self.config['embrapa']['url_base']
@@ -38,7 +45,6 @@ class Conf:
 
         commercialization = self.config['data_of_interest']['commercialization']
         self.commercialization = self.structing_data(commercialization)
-
 
         importation = self.config['data_of_interest']['importation']
         self.importation = self.structing_data(importation)

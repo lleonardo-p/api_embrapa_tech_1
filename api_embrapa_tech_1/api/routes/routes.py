@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Path
 from enum import Enum
-from embrapa_crawler.crawler import EmbrapaCrawler
-from utils.conf import Conf
+from api_embrapa_tech_1.embrapa_crawler.crawler import EmbrapaCrawler
+from api_embrapa_tech_1.utils.conf import Conf
 
-config = Conf("config/prod.yml")
+config = Conf("utils/config/prod.yml")
 config.get_properties()
 crawler = EmbrapaCrawler(config)
 

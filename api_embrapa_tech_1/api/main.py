@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api.routes import routes 
+from api_embrapa_tech_1.api.routes import routes 
 from fastapi.responses import JSONResponse
 
 app = FastAPI()
