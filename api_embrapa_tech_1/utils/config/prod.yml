@@ -1,0 +1,37 @@
+embrapa:
+  url_base: "http://vitibrasil.cnpuv.embrapa.br/index.php?"
+  data_max: 2023
+  data_min: 1970
+
+data_of_interest:
+  production:
+    opc: ["production", "&opcao=opt_02"]
+
+  processing:
+    opc: ["processing", "&opcao=opt_03"]
+    sub_options:
+      viniferas: ["&subopcao=subopt_01", "Viniferas"]
+      americana_hibri: ["&subopcao=subopt_02", "Americanas e híbridas"]
+      uva_mesa: ["&subopcao=subopt_03", "Uvas de mesa"]
+      sem_class: ["&subopcao=subopt_04", "Sem classificação"]
+
+  commercialization:
+    opc: ["commercialization", "&opcao=opt_04"]
+
+  importation:
+    opc: ["importation", "&opcao=opt_05"]
+    sub_options:
+      vinho_mesa: ["&subopcao=subopt_01","Vinhos de mesa"]
+      espumante: ["&subopcao=subopt_02","Espumantes"]
+      uvas_frescas: ["&subopcao=subopt_03","Uvas frescas"]
+      uvas_passas: ["&subopcao=subopt_04","Uvas passas"]
+      suco_uva: ["&subopcao=subopt_05", "Suco de uva"]
+
+  exportation:
+    opc: ["exportation", "&opcao=opt_06"]
+    sub_options:
+      vinho_mesa: ["&subopcao=subopt_01", "Vinhos de mesa"]
+      espumante: ["&subopcao=subopt_02", "Espumantes"]
+      uvas_frescas: ["&subopcao=subopt_03", "Uvas frescas"]
+      suco_uva: ["&subopcao=subopt_04", "Suco de uva"]
+
