@@ -12,9 +12,9 @@ O entregável do projeto inclui:
 - Publicação da API (com link compartilhável)
 - Desenho da arquitetura, com visão end-to-end dos dados extraídos até o consumo (desenho macro)
 
-A documentação da API está disponível em: [Swagger Documentation](https://api-embrapa-tech-1-cc690ffna-leonardo-lucas-pereiras-projects.vercel.app/?vercelToolbarCode=bNtsox5ygnVqBnG/docs)
+A documentação da API está disponível em: [Swagger Documentation](https://api-embrapa-tech-1-i9l0snkng-leonardo-lucas-pereiras-projects.vercel.app/docs)
 
-Link para a API em produção: [API Pública](https://api-embrapa-tech-1-cc690ffna-leonardo-lucas-pereiras-projects.vercel.app/)
+Link para a API em produção: [API Pública](https://api-embrapa-tech-1-i9l0snkng-leonardo-lucas-pereiras-projects.vercel.app/)
 
 Desenho da arquitetura:
 
