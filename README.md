@@ -26,8 +26,6 @@ Desenho da arquitetura:
 
 # Instruções de Instalação e Execução
 
-Este documento fornece instruções sobre como instalar e executar a aplicação localmente.
-
 ## Pré-requisitos
 
 - Python 3.12 ou superior
